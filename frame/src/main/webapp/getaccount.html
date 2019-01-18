@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取信息</title>
+    <script src="js/jquery.min.js"></script>
+    <script>
+            $(function () {
+                $("#findAccount").click(function () {
+                    $.post("getAccount",function (data) {
+                        var temp=' <tr><td>id</td><td>姓名</td><td>资金</td><td>修改</td></tr>';
+                        for(var i=0;i<data.length;i++){
+                            temp += "<tr><td >"+data[i].id+"</td>"
+                            temp += "<td id='name"+data[i].id+"'>"+data[i].name+"</td>"
+                            temp += "<td id='money"+data[i].id+"'>"+data[i].money+"</td>"
+                            temp += "<td><a href='update.html?id="+data[i].id+"'>修改</a></td></tr>"
+                        }
+                        $("#account").html(temp)
+                    })
+                })
+            })
+            $.post("getAccount",function (data) {
+                var temp=' <tr><td>id</td><td>姓名</td><td>资金</td><td>修改</td></tr>';
+                for(var i=0;i<data.length;i++){
+                    temp += "<tr><td >"+data[i].id+"</td>"
+                    temp += "<td id='name"+data[i].id+"'>"+data[i].name+"</td>"
+                    temp += "<td id='money"+data[i].id+"'>"+data[i].money+"</td>"
+                    temp += "<td><a href='update.html?id="+data[i].id+"'>修改</a></td></tr>"
+                }
+                $("#account").html(temp)
+            })
+
+    </script>
+</head>
+<body>
+<div style="text-align: center;margin-top: 100px">
+    <button id="findAccount">刷新用户</button>
+    <table style="margin: 50px auto 0px auto" id="account" border="1px">
+
+    </table>
+</div>
+</body>
+
+</html>

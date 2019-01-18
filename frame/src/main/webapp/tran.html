@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>转账</title>
+    <script src="js/jquery.min.js"></script>
+
+</head>
+<body>
+<div style="text-align: center;margin-top: 100px">
+    <h3>转账</h3>
+    转账人：<input type="text" id="id_send"><br>
+    转账人：<input type="text" id="id_receive"><br>
+    资&nbsp;&nbsp;&nbsp;&nbsp;金：<input type="text" id="money"><br>
+    <button style="margin-top: 15px" id="yesBt" >确定转账</button>
+</div>
+<script>
+    $(function () {
+        $("#yesBt").click(function () {
+            var id_send = $("#id_send").val();
+            var id_receive = $("#id_receive").val();
+            var money = $("#money").val();
+            $.post("transfer",{id_send:id_send,id_receive:id_receive,money:money},function (data) {
+                alert(data)
+            })
+        })
+    })
+</script>
+</body>
+</html>

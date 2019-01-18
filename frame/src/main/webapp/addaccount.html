@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取信息</title>
+    <script src="js/jquery.min.js"></script>
+    <script>
+            $(function () {
+                $("#addAccount").click(function () {
+                    var name = $("#name").val();
+                    var money = $("#money").val();
+                    $.post("addAccount",{name:name,money:money},function (data) {
+                        alert(data.data)
+                    })
+                })
+            })
+    </script>
+</head>
+<body>
+<div style="text-align: center;margin-top: 100px">
+    姓名：<input  id="name" type="text" placeholder="填写姓名"><br>
+    资金：<input  id="money" type="text" placeholder="初始化资金"><br>
+    <button id="addAccount" style="margin-top: 10px">添加用户</button>
+</div>
+</body>
+
+</html>

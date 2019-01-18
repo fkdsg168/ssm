@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/getParameter.js"></script>
+    <script>
+        $(function () {
+            var id = getParameter("id");
+            $.post("findAccountById",{id:id},function (data) {
+                $("#id").val(data.id);
+                $("#name").val(data.name);
+                $("#money").val(data.money);
+            })
+
+            $("#yesBt").click(function () {
+                alert("32131")
+                var id = $("#id").val();
+                var name = $("#name").val();
+                var money = $("#money").val();
+                $.post("updateAccount",{id:id,name:name,money:money},function (data) {
+                    alert(data.data)
+                })
+            })
+        })
+
+
+
+    </script>
+</head>
+<body>
+    <div style="text-align: center;margin-top: 100px">
+        卡号：<input  style="margin-top: 10px" type="text" id="id" disabled><br>
+        姓名：<input  style="margin-top: 10px" type="text" id="name"><br>
+        资金：<input  style="margin-top: 10px" type="text" id="money"><br>
+        <button style="margin-top: 15px" id="yesBt" value="1231">确定修改</button>
+    </div>
+</body>
+</html>

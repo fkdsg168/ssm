@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace:指向 AccountDao的全类名 -->
+<mapper namespace="cn.lihui.dao.AccountDao">
+<!--
+     标签<select>：为查询标签
+     id:为方法名，识别方法的为唯一标识
+     resultType:返回值类型，若是嵌套的引用类型的对象，需要用resultMap进行映射
+     resultMap：对返回的值进行映射封装
+ -->
+<select id="findAcounts" resultType="cn.lihui.daomian.Account">
+        select * from account
+  </select>
+    <insert id="addAccount" parameterType="cn.lihui.daomian.Account">
+        insert into account(name,money) values (#{name},#{money})
+    </insert>
+</mapper>
